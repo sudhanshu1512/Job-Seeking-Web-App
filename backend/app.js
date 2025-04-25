@@ -3,14 +3,15 @@ import { dbConnection } from "./database/dbConnection.js";
 import jobRouter from "./routes/jobRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import applicationRouter from "./routes/applicationRoutes.js";
-import { config } from "dotenv";
 import cors from "cors";
 import { errorMiddleware } from "./middlewares/error.js";
 import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
+import cloudinary from "cloudinary";
+import dotenv from "dotenv";
 import path from "path";
 
-config(); // Load environment variables first
+dotenv.config(); // Load environment variables first
 const app = express();
 
 const __dirname = path.resolve();
@@ -28,6 +29,17 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+cloudinary.v2.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+});
+
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+})
+
 app.use(
   fileUpload({
     useTempFiles: true,
@@ -43,6 +55,11 @@ app.use(express.static(path.join(__dirname, "/frontend/dist")));
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 })
+
+app.listen(process.env.PORT, () => {
+  console.log(`Server running at port ${process.env.PORT}`);
+});
+
 
 app.use(errorMiddleware);
 export default app;
