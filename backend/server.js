@@ -5,6 +5,7 @@ import path from "path";
 
 dotenv.config();
 const __dirname = path.resolve();
+const PORT = process.env.PORT || 3000;
 
 cloudinary.v2.config({
   cloud_name: process.env.CLOUD_NAME,

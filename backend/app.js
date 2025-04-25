@@ -10,10 +10,11 @@ import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import path from "path";
 
-config(); // Load environment variables first
+dotenv.config(); // Load environment variables first
 const app = express();
 
 const __dirname = path.resolve();
+const PORT = process.env.PORT || 3000;
 
 app.use(
   cors({
