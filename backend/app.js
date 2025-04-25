@@ -32,6 +32,7 @@ app.use(
 );
 
 app.use(cookieParser());
+app.use("/api/v1/user", userRoutes);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
