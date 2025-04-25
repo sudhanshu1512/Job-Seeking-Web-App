@@ -28,7 +28,7 @@ const Register = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/api/v1/user/register",
+        "https://job-seeking-web-app-lmta.onrender.com/api/v1/user/register",
         { name, phone, email, role, password },
         {
           headers: {
