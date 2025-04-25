@@ -2,12 +2,12 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon backend/server.js",
      "start":"nodemon backend/server.js",
-     "build":"npm install && npm install --prefix front && npm run build --prefix front"
+     "build":"npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "",
   "license": "ISC",
