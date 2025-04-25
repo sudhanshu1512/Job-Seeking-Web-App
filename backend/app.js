@@ -24,6 +24,12 @@ app.use(
     credentials: true,
   })
 );
+app.use(
+  cors({
+    origin: "https://job-seeking-web-app-jv6l.onrender.com", // your frontend URL
+    credentials: true, // if you're using cookies or auth headers
+  })
+);
 
 app.use(cookieParser());
 app.use(express.json());
