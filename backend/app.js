@@ -10,7 +10,7 @@ import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import path from "path";
 
-dotenv.config(); // Load environment variables first
+config(); // Load environment variables first
 const app = express();
 
 const __dirname = path.resolve();
