@@ -15,7 +15,7 @@ dotenv.config(); // Load environment variables first
 const app = express();
 
 const __dirname = path.resolve();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || ;
 
 app.use(
   cors({
